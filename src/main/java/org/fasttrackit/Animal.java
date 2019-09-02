@@ -14,7 +14,6 @@ public class Animal {
     int scaredLevel;
     int energyLevel;
     int toiletNeed;
-    int happinessLevel;
 
 
 

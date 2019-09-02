@@ -1,6 +1,6 @@
 package org.fasttrackit;
 
-public class Veterinary_Doctor {
+public class VeterinaryDoctor {
     String name;
     String doctorSpeciality;
 
