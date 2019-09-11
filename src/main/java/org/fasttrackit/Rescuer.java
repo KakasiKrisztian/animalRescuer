@@ -12,4 +12,8 @@ public class Rescuer {
     //Daca e angajat sau nu.
 
 
+    public Rescuer(String name, double money) {
+        this.name = name;
+        this.money = money;
+    }
 }

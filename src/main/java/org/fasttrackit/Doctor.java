@@ -9,4 +9,7 @@ public class Doctor {
     boolean availability;
     double priceForVetServices;
 
+    public Doctor(String name) {
+        this.name = name;
+    }
 }

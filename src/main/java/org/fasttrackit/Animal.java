@@ -15,7 +15,7 @@ public class Animal {
     int energyLevel;
     int toiletNeed;
 
-
-
-
+    public Animal(String name) {
+        this.name = name;
+    }
 }

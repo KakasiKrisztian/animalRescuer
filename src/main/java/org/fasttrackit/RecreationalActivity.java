@@ -11,9 +11,7 @@ public class RecreationalActivity {
     boolean loyaltyGained;
     int amountOfLoyaltyGained;
 
-
-
-
-
-
+    public RecreationalActivity(String name) {
+        this.name = name;
+    }
 }

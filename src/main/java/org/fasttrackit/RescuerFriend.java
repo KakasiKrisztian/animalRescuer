@@ -5,4 +5,7 @@ public class RescuerFriend {
     String name;
     int age;
 
+    public RescuerFriend(String name) {
+        this.name = name;
+    }
 }

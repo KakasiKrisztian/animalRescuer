@@ -8,4 +8,8 @@ public class Toy {
     int happinessRaisingNumber;
     boolean happinessLevelRaised;
 
+    public Toy(String name, double toyPrice) {
+        this.name = name;
+        this.toyPrice = toyPrice;
+    }
 }

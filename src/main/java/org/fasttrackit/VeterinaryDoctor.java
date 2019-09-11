@@ -5,6 +5,8 @@ public class VeterinaryDoctor extends Doctor {
     // If this ability is > than the scaredLevel of the animal then he can treat the animal
 
 
-
-
+    public VeterinaryDoctor(String name, int abilityToCalmTheAnimal) {
+        super(name);
+        this.abilityToCalmTheAnimal = abilityToCalmTheAnimal;
+    }
 }
