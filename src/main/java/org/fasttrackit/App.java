@@ -28,6 +28,7 @@ public class App
             animalFood.expiryDate = LocalDateTime.of(2019, 9, 13, 12, 00);
             animalFood.inStock = true;
 
+
           RecreationalActivity recreationalActivity = new RecreationalActivity();
             recreationalActivity.name = "Walk";
 
