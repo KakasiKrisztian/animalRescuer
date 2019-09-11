@@ -5,6 +5,7 @@ public class Toy {
     String name;
     String toyType;
     double toyPrice;
-    int happinessRaising;
+    int happinessRaisingNumber;
+    boolean happinessLevelRaised;
 
 }

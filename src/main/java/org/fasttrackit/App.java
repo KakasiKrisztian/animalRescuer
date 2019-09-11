@@ -1,5 +1,7 @@
 package org.fasttrackit;
 
+import java.time.LocalDateTime;
+
 /**
  * Hello world!
  *
@@ -19,23 +21,23 @@ public class App
                 animal.foodPreferred = "Meat";
                 animal.activityPreferred = "Catch the stick";
 
-         AnimalFood animal_food = new AnimalFood();
-            animal_food.name = "Meat";
-            animal_food.price = 12.5;
-            animal_food.quantity = 1.5;
-            // animal_food.expiryDate - nu stiu cum trec data?
-            animal_food.inStock = true;
+         AnimalFood animalFood = new AnimalFood();
+            animalFood.name = "Meat";
+            animalFood.price = 12.5;
+            animalFood.quantity = 1.5;
+            animalFood.expiryDate = LocalDateTime.of(2019, 9, 13, 12, 00);
+            animalFood.inStock = true;
 
-          RecreationalActivity recreational_activity = new RecreationalActivity();
-            recreational_activity.name = "Walk";
+          RecreationalActivity recreationalActivity = new RecreationalActivity();
+            recreationalActivity.name = "Walk";
 
            Rescuer rescuer = new Rescuer();
                 rescuer.name = "Cristi";
                 rescuer.money = 55;
 
-            VeterinaryDoctor veterinary_doctor = new VeterinaryDoctor();
-                veterinary_doctor.name = "Doctor Steve";
-                veterinary_doctor.doctorSpeciality = "Veterinary Medicine";
+            VeterinaryDoctor veterinaryDoctor = new VeterinaryDoctor();
+                veterinaryDoctor.name = "Doctor Steve";
+                veterinaryDoctor.doctorSpeciality = "Veterinary Medicine";
 
 
 
