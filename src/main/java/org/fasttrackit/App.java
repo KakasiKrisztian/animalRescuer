@@ -10,19 +10,16 @@ public class App {
         System.out.println("Hello World!");
 
         Animal animal = new Animal("Rex");
-        animal.age = 3;
-        animal.healthLevel = 7;
-        animal.hungerLevel = 5;
-        animal.moodLevel = 6;
-        animal.foodPreferred = "Meat";
-        animal.activityPreferred = "Catch the stick";
+        animal.setAge(3);
+        animal.setHealthLevel(7);
+        animal.setHungerLevel(5);
+        animal.setMoodLevel(6);
+        animal.setFoodPreferred("Meat");
+        animal.setActivityPreferred("Catch the stick");
 
-        AnimalFood animalFood = new AnimalFood("Dogs", false);
-        animalFood.name = "Meat";
-        animalFood.price = 12.5;
-        animalFood.quantity = 1.5;
-        animalFood.expiryDate = LocalDateTime.of(2019, 9, 13, 12, 0);
-        animalFood.inStock = true;
+        AnimalFood animalFood = new AnimalFood("Pedigree", 20, 1,"Dogs", false);
+        animalFood.setExpiryDate(LocalDateTime.of(2019, 13, 9, 12, 0));
+        animalFood.setInStock(true);
 
 
         RecreationalActivity recreationalActivity = new RecreationalActivity("Walk");
@@ -31,7 +28,7 @@ public class App {
 
 
         VeterinaryDoctor veterinaryDoctor = new VeterinaryDoctor("Doctor Steve", 7);
-        veterinaryDoctor.doctorSpeciality = "Veterinary Medicine";
+        veterinaryDoctor.setDoctorSpeciality("Veterinary Medicine");
 
 
     }

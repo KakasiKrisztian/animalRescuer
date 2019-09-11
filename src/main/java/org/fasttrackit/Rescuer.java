@@ -1,19 +1,67 @@
 package org.fasttrackit;
 
 public class Rescuer {
-    String name;
-    double money;
+    private String name;
+    private double money;
 
     //optional
-    int loveTowardsAnimals;
-    int hungerLevel;
-    int stressLevel;
-    boolean worker;
+    private int loveTowardsAnimals;
+    private int hungerLevel;
+    private int stressLevel;
+    private boolean worker;
     //Daca e angajat sau nu.
 
 
     public Rescuer(String name, double money) {
         this.name = name;
         this.money = money;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getMoney() {
+        return money;
+    }
+
+    public void setMoney(double money) {
+        this.money = money;
+    }
+
+    public int getLoveTowardsAnimals() {
+        return loveTowardsAnimals;
+    }
+
+    public void setLoveTowardsAnimals(int loveTowardsAnimals) {
+        this.loveTowardsAnimals = loveTowardsAnimals;
+    }
+
+    public int getHungerLevel() {
+        return hungerLevel;
+    }
+
+    public void setHungerLevel(int hungerLevel) {
+        this.hungerLevel = hungerLevel;
+    }
+
+    public int getStressLevel() {
+        return stressLevel;
+    }
+
+    public void setStressLevel(int stressLevel) {
+        this.stressLevel = stressLevel;
+    }
+
+    public boolean isWorker() {
+        return worker;
+    }
+
+    public void setWorker(boolean worker) {
+        this.worker = worker;
     }
 }
