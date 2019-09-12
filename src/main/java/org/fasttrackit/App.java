@@ -17,8 +17,8 @@ public class App {
         animal.setFoodPreferred("Meat");
         animal.setActivityPreferred("Catch the stick");
 
-        AnimalFood animalFood = new AnimalFood("Pedigree", 20, 1,"Dogs", false);
-        animalFood.setExpiryDate(LocalDateTime.of(2019, 13, 9, 12, 0));
+        AnimalFood animalFood = new AnimalFood("Pedigree", 20, 1, "Dogs", false);
+        animalFood.setExpiryDate(LocalDateTime.of(2019, 12, 9, 12, 0));
         animalFood.setInStock(true);
 
 
@@ -29,6 +29,10 @@ public class App {
 
         VeterinaryDoctor veterinaryDoctor = new VeterinaryDoctor("Doctor Steve", 7);
         veterinaryDoctor.setDoctorSpeciality("Veterinary Medicine");
+
+        rescuer.feedPet(animal, animalFood);
+
+        rescuer.playCatch(rescuer, animal);
 
 
     }

@@ -17,6 +17,20 @@ public class Rescuer {
         this.money = money;
     }
 
+    public void feedPet(Animal animal, AnimalFood animalFood) {
+        System.out.println(this.getName() + " just gave some " + animalFood.getName() + " food to " + animal.getName() + "." );
+        animal.setHungerLevel(animal.getHungerLevel() - 1);
+        System.out.println(animal.getName() + " hunger level is now: " + animal.getHungerLevel());
+    }
+    public void playCatch(Rescuer rescuer, Animal animal) {
+        System.out.println(animal.getName() + " current mood level is: " + animal.getMoodLevel());
+        System.out.println(rescuer.getName() + " is playing catch with " + animal.getName() + ".");
+        animal.setMoodLevel(animal.getMoodLevel() + 1);
+        System.out.println(animal.getName() + " mood level is now: " + animal.getMoodLevel());
+
+    }
+
+
     public String getName() {
         return name;
     }
