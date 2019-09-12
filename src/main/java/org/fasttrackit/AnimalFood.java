@@ -10,4 +10,20 @@ public class AnimalFood extends Food {
         this.animalForWhichIsDestined = animalForWhichIsDestined;
         this.mixedAnimalUsage = mixedAnimalUsage;
     }
+
+    public String getAnimalForWhichIsDestined() {
+        return animalForWhichIsDestined;
+    }
+
+    public void setAnimalForWhichIsDestined(String animalForWhichIsDestined) {
+        this.animalForWhichIsDestined = animalForWhichIsDestined;
+    }
+
+    public boolean isMixedAnimalUsage() {
+        return mixedAnimalUsage;
+    }
+
+    public void setMixedAnimalUsage(boolean mixedAnimalUsage) {
+        this.mixedAnimalUsage = mixedAnimalUsage;
+    }
 }

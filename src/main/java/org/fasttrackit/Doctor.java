@@ -7,7 +7,7 @@ public class Doctor {
     //optional
     private boolean otherClients;
     private boolean availability;
-    private double priceForVetServices;
+    private double priceForServices;
 
     public Doctor(String name) {
         this.name = name;
@@ -45,11 +45,11 @@ public class Doctor {
         this.availability = availability;
     }
 
-    public double getPriceForVetServices() {
-        return priceForVetServices;
+    public double getPriceForServices() {
+        return priceForServices;
     }
 
-    public void setPriceForVetServices(double priceForVetServices) {
-        this.priceForVetServices = priceForVetServices;
+    public void setPriceForServices(double priceForVetServices) {
+        this.priceForServices = priceForVetServices;
     }
 }

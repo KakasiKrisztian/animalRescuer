@@ -21,6 +21,13 @@ public class App {
         animalFood.setExpiryDate(LocalDateTime.of(2019, 12, 9, 12, 0));
         animalFood.setInStock(true);
 
+        Doctor doctor = new Doctor("Doctor Mike");
+        doctor.setAvailability(true);
+        doctor.setDoctorSpeciality("Family medicine");
+        doctor.setOtherClients(false);
+        doctor.setPriceForServices(10);
+
+        Food food = new Food("Hamburger", 5, 0.5);
 
         RecreationalActivity recreationalActivity = new RecreationalActivity("Walk");
 
@@ -29,6 +36,16 @@ public class App {
 
         VeterinaryDoctor veterinaryDoctor = new VeterinaryDoctor("Doctor Steve", 7);
         veterinaryDoctor.setDoctorSpeciality("Veterinary Medicine");
+
+        Game game = new Game(rescuer, veterinaryDoctor, animal);
+
+        RescuerFriend rescuerFriend = new RescuerFriend("Reed");
+        rescuerFriend.setAge(18);
+
+        Tamer tamer = new Tamer("Michael", 15);
+
+        Toy toy = new Toy("Fluffy ball", 5);
+
 
         rescuer.feedPet(animal, animalFood);
 
