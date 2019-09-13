@@ -18,6 +18,7 @@ public class Rescuer {
     }
 
     public void feedPet(Animal animal, AnimalFood animalFood) {
+        System.out.println(animal.getName() + " hunger level is: " + animal.getHungerLevel());
         System.out.println(this.getName() + " just gave some " + animalFood.getName() + " food to " + animal.getName() + "." );
         animal.setHungerLevel(animal.getHungerLevel() - 1);
         System.out.println(animal.getName() + " hunger level is now: " + animal.getHungerLevel());
