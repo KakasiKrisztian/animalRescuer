@@ -15,6 +15,7 @@ public class Animal {
     private int energyLevel;
     private int toiletNeed;
 
+
     public Animal(String name) {
         this.name = name;
     }
@@ -106,4 +107,11 @@ public class Animal {
     public void setToiletNeed(int toiletNeed) {
         this.toiletNeed = toiletNeed;
     }
+
+    public void showMoodLevel(Animal animal) {
+        System.out.println("The mood level for " + animal.getName() + " is " + animal.getMoodLevel() + "/10");
+
+    }
+
+
 }

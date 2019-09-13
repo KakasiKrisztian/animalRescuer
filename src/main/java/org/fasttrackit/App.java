@@ -46,10 +46,30 @@ public class App {
 
         Toy toy = new Toy("Fluffy ball", 5);
 
+        Dog dog = new Dog("Puffy");
+        dog.setDogRace("German Sheppard");
+        dog.setActivityPreferred("Long runs");
+        dog.setAge(2);
+        dog.setEnergyLevel(9);
+        dog.setFoodPreferred("Raw meat");
+        dog.setHealthLevel(10);
+        dog.setHungerLevel(7);
+        dog.setLoyalty(9);
+        dog.setMoodLevel(8);
+        dog.setScaredLevel(2);
+
 
         rescuer.feedPet(animal, animalFood);
 
         rescuer.playCatch(rescuer, animal);
+
+        animal.showMoodLevel(animal);
+
+        dog.showMoodLevel(dog);
+
+        dog.setMoodLevel(3);
+
+        dog.showMoodLevel(dog);
 
 
     }
