@@ -21,6 +21,8 @@ public class App {
         animalFood.setExpiryDate(LocalDateTime.of(2019, 12, 9, 12, 0));
         animalFood.setInStock(true);
 
+        AnimalFood animalFood2 = new AnimalFood("Whiskas", 10, 1, "Cats", false );
+
         Doctor doctor = new Doctor("Doctor Mike");
         doctor.setAvailability(true);
         doctor.setDoctorSpeciality("Family medicine");
@@ -83,6 +85,10 @@ public class App {
         cat.setMoodLevel(8);
 
         cat.showMoodLevel(cat);
+
+        rescuer.feedPet(dog, animalFood);
+
+        rescuer.feedPet(cat, animalFood2);
 
 
     }
