@@ -46,8 +46,7 @@ public class App {
 
         Toy toy = new Toy("Fluffy ball", 5);
 
-        Dog dog = new Dog("Puffy");
-        dog.setDogRace("German Sheppard");
+        Animal dog = new Dog("Puffy", "German Sheppard");
         dog.setActivityPreferred("Long runs");
         dog.setAge(2);
         dog.setEnergyLevel(9);
@@ -57,6 +56,14 @@ public class App {
         dog.setLoyalty(9);
         dog.setMoodLevel(8);
         dog.setScaredLevel(2);
+
+        Animal cat = new Cat("Mushroom", "Egyptian Cat");
+        cat.setMoodLevel(6);
+        cat.setHungerLevel(4);
+        cat.setActivityPreferred("Play with a fur ball");
+        cat.setFoodPreferred("Marinated pieces of beef");
+        cat.setAge(5);
+        cat.setHealthLevel(8);
 
 
         rescuer.feedPet(animal, animalFood);
@@ -70,6 +77,12 @@ public class App {
         dog.setMoodLevel(3);
 
         dog.showMoodLevel(dog);
+
+        cat.showMoodLevel(cat);
+
+        cat.setMoodLevel(8);
+
+        cat.showMoodLevel(cat);
 
 
     }
