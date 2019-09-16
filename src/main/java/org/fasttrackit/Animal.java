@@ -108,8 +108,8 @@ public class Animal {
         this.toiletNeed = toiletNeed;
     }
 
-    public void showMoodLevel(Animal animal) {
-        System.out.println("The mood level for " + animal.getName() + " is " + animal.getMoodLevel() + "/10");
+    public void showMoodLevel() {
+        System.out.println("The mood level for " + getName() + " is " + getMoodLevel() + "/10");
 
     }
 

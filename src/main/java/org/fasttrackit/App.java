@@ -21,8 +21,6 @@ public class App {
         animalFood.setExpiryDate(LocalDateTime.of(2019, 12, 9, 12, 0));
         animalFood.setInStock(true);
 
-        AnimalFood animalFood2 = new AnimalFood("Marinated pieces of beef", 10, 1, "Cats", false );
-
         Doctor doctor = new Doctor("Doctor Mike");
         doctor.setAvailability(true);
         doctor.setDoctorSpeciality("Family medicine");
@@ -72,23 +70,19 @@ public class App {
 
         rescuer.playCatch(rescuer, animal);
 
-        animal.showMoodLevel(animal);
+        animal.showMoodLevel();
 
-        dog.showMoodLevel(dog);
+        dog.showMoodLevel();
 
         dog.setMoodLevel(3);
 
-        dog.showMoodLevel(dog);
+        dog.showMoodLevel();
 
-        cat.showMoodLevel(cat);
+        cat.showMoodLevel();
 
         cat.setMoodLevel(8);
 
-        cat.showMoodLevel(cat);
-
-        rescuer.feedPet(dog, animalFood);
-
-        rescuer.feedPet(cat, animalFood2);
+        cat.showMoodLevel();
 
 
     }
