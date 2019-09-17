@@ -18,15 +18,32 @@ public class Rescuer {
     }
 
     public void feedPet(Animal animal, AnimalFood animalFood) {
-
+        System.out.println(getName() + " sees that " + animal.getName() + " looks hungry. He opens the drawer and picks up some " + animalFood.getName() + ".");
         System.out.println(animal.getName() + " hunger level is: " + animal.getHungerLevel());
-        System.out.println(this.getName() + " just gave some " + animalFood.getName() + " food to " + animal.getName() + "." );
+        System.out.println(animal.getName() + " mood level is: " + animal.getMoodLevel() + "/10");
+        System.out.println(this.getName() + " just gave some " + animalFood.getName() + " food to " + animal.getName() + ".");
+
+        if (animalFood.getName() == animal.getFoodPreferred()) {
+            animal.setMoodLevel(animal.getMoodLevel() + 1);
+            System.out.println("Getting his favorite food makes " + animal.getName() + " happier. His mood level is now " + animal.getMoodLevel() + "/10.");
+
+        }
         animal.setHungerLevel(animal.getHungerLevel() - 1);
         System.out.println(animal.getName() + " hunger level is now: " + animal.getHungerLevel());
     }
+
     public void playCatch(Rescuer rescuer, Animal animal) {
-        System.out.println(animal.getName() + " current mood level is: " + animal.getMoodLevel());
+        System.out.println(animal.getName() + " mood level is " + animal.getMoodLevel() + "/10");
         System.out.println(rescuer.getName() + " is playing catch with " + animal.getName() + ".");
+
+
+        if ("play catch" == animal.getActivityPreferred()) {
+            System.out.println(animal.getName() + " loves to " + animal.getActivityPreferred() + ". He is much happier now.");
+            animal.setMoodLevel(animal.getMoodLevel() + 2);
+            System.out.println(animal.getName() + " mood level is now " + animal.getMoodLevel() + "/10.");
+            return;
+        }
+        System.out.println(animal.getName() + " current mood level is: " + animal.getMoodLevel());
         animal.setMoodLevel(animal.getMoodLevel() + 1);
         System.out.println(animal.getName() + " mood level is now: " + animal.getMoodLevel());
 
@@ -80,4 +97,5 @@ public class Rescuer {
     public void setWorker(boolean worker) {
         this.worker = worker;
     }
+
 }

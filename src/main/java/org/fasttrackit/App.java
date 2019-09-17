@@ -2,9 +2,9 @@ package org.fasttrackit;
 
 import java.time.LocalDateTime;
 
-/**
- * Hello world!
- */
+///**
+// * Hello world!
+// */
 public class App {
     public static void main(String[] args) {
         System.out.println("Hello World!");
@@ -14,8 +14,8 @@ public class App {
         animal.setHealthLevel(7);
         animal.setHungerLevel(5);
         animal.setMoodLevel(6);
-        animal.setFoodPreferred("Meat");
-        animal.setActivityPreferred("Catch the stick");
+        animal.setFoodPreferred("Pedigree");
+        animal.setActivityPreferred("play catch");
 
         AnimalFood animalFood = new AnimalFood("Pedigree", 20, 1, "Dogs", false);
         animalFood.setExpiryDate(LocalDateTime.of(2019, 12, 9, 12, 0));
@@ -66,23 +66,27 @@ public class App {
         cat.setHealthLevel(8);
 
 
+//        rescuer.feedPet(animal, animalFood);
+//
+//        rescuer.playCatch(rescuer, animal);
+//
+//        animal.showMoodLevel();
+//
+//        dog.showMoodLevel();
+//
+//        dog.setMoodLevel(3);
+//
+//        dog.showMoodLevel();
+//
+//        cat.showMoodLevel();
+//
+//        cat.setMoodLevel(8);
+//
+//        cat.showMoodLevel();
+
         rescuer.feedPet(animal, animalFood);
 
         rescuer.playCatch(rescuer, animal);
-
-        animal.showMoodLevel();
-
-        dog.showMoodLevel();
-
-        dog.setMoodLevel(3);
-
-        dog.showMoodLevel();
-
-        cat.showMoodLevel();
-
-        cat.setMoodLevel(8);
-
-        cat.showMoodLevel();
 
 
     }
