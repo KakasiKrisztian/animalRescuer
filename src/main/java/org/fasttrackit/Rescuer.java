@@ -32,12 +32,12 @@ public class Rescuer {
         System.out.println(animal.getName() + " hunger level is now: " + animal.getHungerLevel());
     }
 
-    public void playCatch(Rescuer rescuer, Animal animal) {
+    public void playCatch(RecreationalActivity recreationalActivity, Animal animal) {
         System.out.println(animal.getName() + " mood level is " + animal.getMoodLevel() + "/10");
-        System.out.println(rescuer.getName() + " is playing catch with " + animal.getName() + ".");
+        System.out.println(getName() + " is playing catch with " + animal.getName() + ".");
 
 
-        if ("play catch" == animal.getActivityPreferred()) {
+        if (recreationalActivity.getName() == animal.getActivityPreferred()) {
             System.out.println(animal.getName() + " loves to " + animal.getActivityPreferred() + ". He is much happier now.");
             animal.setMoodLevel(animal.getMoodLevel() + 2);
             System.out.println(animal.getName() + " mood level is now " + animal.getMoodLevel() + "/10.");

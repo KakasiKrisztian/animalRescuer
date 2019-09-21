@@ -29,7 +29,7 @@ public class App {
 
         Food food = new Food("Hamburger", 5, 0.5);
 
-        RecreationalActivity recreationalActivity = new RecreationalActivity("Walk");
+        RecreationalActivity recreationalActivity = new RecreationalActivity("play catch");
 
         Rescuer rescuer = new Rescuer("Cristi", 55);
 
@@ -86,7 +86,7 @@ public class App {
 
         rescuer.feedPet(animal, animalFood);
 
-        rescuer.playCatch(rescuer, animal);
+        rescuer.playCatch(recreationalActivity, animal);
 
 
     }
