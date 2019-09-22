@@ -84,9 +84,11 @@ public class App {
 //
 //        cat.showMoodLevel();
 
-        rescuer.feedPet(animal, animalFood);
+//        rescuer.feedPet(animal, animalFood);
+//
+//        rescuer.playCatch(recreationalActivity, animal);
 
-        rescuer.playCatch(recreationalActivity, animal);
+        game.start();
 
 
     }

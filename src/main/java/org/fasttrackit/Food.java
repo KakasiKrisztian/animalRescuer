@@ -92,4 +92,11 @@ public class Food {
     public void setFoodType(String foodType) {
         this.foodType = foodType;
     }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

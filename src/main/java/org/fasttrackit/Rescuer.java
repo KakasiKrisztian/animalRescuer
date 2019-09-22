@@ -1,8 +1,12 @@
 package org.fasttrackit;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rescuer {
     private String name;
     private double money;
+
 
     //optional
     private int loveTowardsAnimals;

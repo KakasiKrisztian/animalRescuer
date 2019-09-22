@@ -26,4 +26,12 @@ public class AnimalFood extends Food {
     public void setMixedAnimalUsage(boolean mixedAnimalUsage) {
         this.mixedAnimalUsage = mixedAnimalUsage;
     }
+
+    @Override
+    public String toString() {
+        return "AnimalFood{" +
+                "animalForWhichIsDestined='" + animalForWhichIsDestined + '\'' +
+                ", mixedAnimalUsage=" + mixedAnimalUsage +
+                '}';
+    }
 }
