@@ -1,7 +1,9 @@
 package org.fasttrackit;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Game {
     Rescuer rescuer;
@@ -10,18 +12,117 @@ public class Game {
     private List<AnimalFood> availableAnimalFood = new ArrayList<>();
     private RecreationalActivity[] availableActivities = new RecreationalActivity[4];
 
-    public Game(Rescuer rescuer, VeterinaryDoctor veterinaryDoctor, Animal dog) {
-        this.rescuer = rescuer;
-        this.veterinaryDoctor = veterinaryDoctor;
-        this.dog = dog;
-    }
+//    public Game(Rescuer rescuer, VeterinaryDoctor veterinaryDoctor, Animal dog) {
+//        this.rescuer = rescuer;
+//        this.veterinaryDoctor = veterinaryDoctor;
+//        this.dog = dog;
+//    }
 
     public void start() {
-        initFood();
-        initActivities();
-        foodNames();
-        availableActivities();
+//        initFood();
+//        initActivities();
+//        foodNames();
+//        availableActivities();
+        initRescuerAndDifficulty();
+        initAnimal();
     }
+
+    public void initAnimal() {
+        int animalChosen = getAnimalChoiceFromUser();
+        if (animalChosen <= 1) {
+            System.out.println("You have chosen to take care of this cute dog.");
+            Dog dog = new Dog("Rex", "Husky");
+            dog.setMoodLevel(4);
+            dog.setScaredLevel(8);
+            dog.setLoyalty(2);
+            dog.setHungerLevel(9);
+            dog.setHealthLevel(6);
+            dog.setFoodPreferred("Meat");
+            dog.setAge(4);
+            dog.setEnergyLevel(7);
+            dog.setActivityPreferred("play catch");
+            dog.setToiletNeed(4);
+        } else {
+            System.out.println("You have chosen to take care of this fluffy cat.");
+            Cat cat = new Cat("Minty", "Munchkin");
+            cat.setMoodLevel(6);
+            cat.setHungerLevel(7);
+            cat.setActivityPreferred("play with a ball");
+            cat.setMoodLevel(5);
+            cat.setAge(2);
+            cat.setFoodPreferred("Beans");
+            cat.setToiletNeed(6);
+            cat.setHealthLevel(9);
+            cat.setEnergyLevel(8);
+        }
+    }
+
+    private int getAnimalChoiceFromUser() {
+        System.out.println("Please select the type of animal would you like to take care of: Option 1 - Dog or Option 2 - Cat.");
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        try {
+            if (x > 2 | x <= 0) {
+                System.out.println("You have entered an invalid option number");
+                getAnimalChoiceFromUser();
+            } else {
+                System.out.println("You have chosen option " + x);
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("You have entered an invalid option number.");
+            return getAnimalChoiceFromUser();
+        }
+        return x;
+    }
+
+    public void initRescuerAndDifficulty() {
+        String nameChosen = nameChosenByUser();
+        int budget;
+        if (chosenDifficultyByUser() == 1){
+            budget = 150;
+        }else if (chosenDifficultyByUser() == 2){
+            budget = 100;
+        }else {
+            budget = 75;
+        }
+        Rescuer rescuer = new Rescuer(nameChosen, budget);
+        System.out.println("Your name is: " + nameChosen + ". Your budget is: " + budget + ". Be careful how you spend your money.");
+
+    }
+
+    private String nameChosenByUser() {
+        System.out.println("Please enter your name.");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            return scanner.nextLine();
+        } catch (RuntimeException e) {
+            System.out.println("You have entered an invalid name");
+            return nameChosenByUser();
+        }
+
+    }
+
+    private int chosenDifficultyByUser() {
+        System.out.println("Please chose the difficulty on which you want to play: 1, 2 or 3.");
+        Scanner scanner = new Scanner(System.in);
+        int y = scanner.nextInt();
+        try {
+            if (y > 3 | y <= 0) {
+                System.out.println("You have entered an invalid option number.");
+                chosenDifficultyByUser();
+            } else{
+                System.out.println("You have chosen difficulty: " + y);
+                return y;
+            }
+        }catch (InputMismatchException e){
+            System.out.println("You have entered an invalid option number.");
+            chosenDifficultyByUser();
+        }
+        return y;
+    }
+
+
+
 
     public void initFood() {
         AnimalFood animalFood1 = new AnimalFood("Meat", 10, 1, "Dogs", false);
