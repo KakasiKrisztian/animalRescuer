@@ -19,12 +19,12 @@ public class Game {
 //    }
 
     public void start() {
-//        initFood();
 //        initActivities();
 //        foodNames();
 //        availableActivities();
         initRescuerAndDifficulty();
         initAnimal();
+        requireFeeding();
     }
 
     public void initAnimal() {
@@ -142,6 +142,11 @@ public class Game {
         return name;
 
     }
+    private void requireFeeding(){
+        System.out.println("Your pet is hungry. Please feed him.");
+        initFood();
+        foodNames();
+    }
 
 
     public void initFood() {
@@ -151,6 +156,7 @@ public class Game {
         AnimalFood animalFood2 = new AnimalFood("Beans", 7, 1, "Cat", true);
         availableAnimalFood.add(animalFood2);
     }
+
 
     public void initActivities() {
         RecreationalActivity recreationalActivity1 = new RecreationalActivity("Walk");
@@ -169,8 +175,15 @@ public class Game {
 
     public void foodNames() {
         System.out.println("The available foods to feed your animal are:");
-        for (int i = 0; i < availableAnimalFood.size(); i++) {
-            System.out.println("-There is: " + availableAnimalFood.get(i).getName());
+        for (int i = 0; i <= availableAnimalFood.size(); i++) {
+            int x = i;
+            if (i == 0) {
+                System.out.println("Option " + (x + 1) + " is: " + availableAnimalFood.get(i).getName());
+            }else if (i == 1){
+                System.out.println("Option " + (x + 1) + " is: " + availableAnimalFood.get(i).getName());
+            }else {
+                System.out.println("Option " + (x + 1) + " is: You can choose to not feed the pet right now");
+            }
         }
     }
 
