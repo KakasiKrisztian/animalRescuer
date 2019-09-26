@@ -60,29 +60,32 @@ public class Game {
     private int getAnimalChoiceFromUser() {
         System.out.println("Please select the type of animal would you like to take care of: Option 1 - Dog or Option 2 - Cat.");
         Scanner scanner = new Scanner(System.in);
-        int x = scanner.nextInt();
+        int x;
         try {
-            if (x > 2 | x <= 0) {
-                System.out.println("You have entered an invalid option number");
-                getAnimalChoiceFromUser();
-            } else {
-                System.out.println("You have chosen option " + x);
-            }
+            x = scanner.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid option number.");
             return getAnimalChoiceFromUser();
         }
+        if (x > 2 | x <= 0) {
+            System.out.println("You have entered an invalid option number");
+            getAnimalChoiceFromUser();
+        } else {
+            System.out.println("You have chosen option " + x);
+            return x;
+        }
         return x;
     }
 
+
     public void initRescuerAndDifficulty() {
         String nameChosen = nameChosenByUser();
-        int budget;
-        if (chosenDifficultyByUser() == 1){
+        int budget = chosenDifficultyByUser();
+        if (budget == 1) {
             budget = 150;
-        }else if (chosenDifficultyByUser() == 2){
+        } else if (budget == 2) {
             budget = 100;
-        }else {
+        } else {
             budget = 75;
         }
         Rescuer rescuer = new Rescuer(nameChosen, budget);
@@ -93,35 +96,35 @@ public class Game {
     private String nameChosenByUser() {
         System.out.println("Please enter your name.");
         Scanner scanner = new Scanner(System.in);
+        String x;
         try {
-            return scanner.nextLine();
-        } catch (RuntimeException e) {
+            x = scanner.nextLine();
+        } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid name");
             return nameChosenByUser();
         }
+        return x;
 
     }
 
     private int chosenDifficultyByUser() {
-        System.out.println("Please chose the difficulty on which you want to play: 1, 2 or 3.");
+        System.out.println("Please choose the difficulty on which you want to play: 1, 2 or 3.");
         Scanner scanner = new Scanner(System.in);
         int y = scanner.nextInt();
         try {
-            if (y > 3 | y <= 0) {
+            if (y >= 4 || y <= 0) {
                 System.out.println("You have entered an invalid option number.");
                 chosenDifficultyByUser();
-            } else{
+            } else {
                 System.out.println("You have chosen difficulty: " + y);
                 return y;
             }
-        }catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid option number.");
             chosenDifficultyByUser();
         }
         return y;
     }
-
-
 
 
     public void initFood() {
