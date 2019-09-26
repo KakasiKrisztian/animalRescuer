@@ -29,9 +29,10 @@ public class Game {
 
     public void initAnimal() {
         int animalChosen = getAnimalChoiceFromUser();
+        String name = nameAnimal();
         if (animalChosen <= 1) {
             System.out.println("You have chosen to take care of this cute dog.");
-            Dog dog = new Dog("Rex", "Husky");
+            Dog dog = new Dog(name, "Husky");
             dog.setMoodLevel(4);
             dog.setScaredLevel(8);
             dog.setLoyalty(2);
@@ -42,9 +43,10 @@ public class Game {
             dog.setEnergyLevel(7);
             dog.setActivityPreferred("play catch");
             dog.setToiletNeed(4);
+            System.out.println("The name of your new dog is: " + name);
         } else {
             System.out.println("You have chosen to take care of this fluffy cat.");
-            Cat cat = new Cat("Minty", "Munchkin");
+            Cat cat = new Cat(name, "Munchkin");
             cat.setMoodLevel(6);
             cat.setHungerLevel(7);
             cat.setActivityPreferred("play with a ball");
@@ -54,6 +56,7 @@ public class Game {
             cat.setToiletNeed(6);
             cat.setHealthLevel(9);
             cat.setEnergyLevel(8);
+            System.out.println("The name of your new cat is: " + name);
         }
     }
 
@@ -124,6 +127,20 @@ public class Game {
             chosenDifficultyByUser();
         }
         return y;
+    }
+
+    private String nameAnimal(){
+        System.out.println("Please choose a name for your new pet.");
+        Scanner scanner = new Scanner(System.in);
+        String name;
+        try {
+            name = scanner.nextLine();
+        }catch (InputMismatchException e){
+            System.out.println("You have entered an invalid name");
+            return nameAnimal();
+        }
+        return name;
+
     }
 
 
