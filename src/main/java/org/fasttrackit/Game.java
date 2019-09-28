@@ -27,12 +27,12 @@ public class Game {
         requireFeeding();
     }
 
-    public void initAnimal() {
+    public final int initAnimal() {
         int animalChosen = getAnimalChoiceFromUser();
         String name = nameAnimal();
         if (animalChosen <= 1) {
             System.out.println("You have chosen to take care of this cute dog.");
-            Dog dog = new Dog(name, "Husky");
+            Animal dog = new Dog(name, "Husky");
             dog.setMoodLevel(4);
             dog.setScaredLevel(8);
             dog.setLoyalty(2);
@@ -44,21 +44,49 @@ public class Game {
             dog.setActivityPreferred("play catch");
             dog.setToiletNeed(4);
             System.out.println("The name of your new dog is: " + name);
+            System.out.println();
+            System.out.println("The stats of " + dog.getName() + " are:");
+            System.out.println("Age: " + dog.getAge());
+            System.out.println("Preferred food: " + dog.getFoodPreferred());
+            System.out.println("Activity preferred: " + dog.getActivityPreferred());
+            System.out.println("Mood level: " + dog.getMoodLevel() + "/10");
+            System.out.println("Scared level: " + dog.getScaredLevel() + "/10");
+            System.out.println("Loyalty level: " + dog.getLoyalty() + "/10");
+            System.out.println("Hunger level: " + dog.getHungerLevel() + "/10");
+            System.out.println("Health level: " + dog.getHealthLevel() + "/10");
+            System.out.println("Energy level: " + dog.getEnergyLevel() + "/10");
+            System.out.println("Toilet need level: " + dog.getToiletNeed() + "/10");
+            return 1;
         } else {
             System.out.println("You have chosen to take care of this fluffy cat.");
-            Cat cat = new Cat(name, "Munchkin");
+            Animal cat = new Cat(name, "Munchkin");
             cat.setMoodLevel(6);
             cat.setHungerLevel(7);
             cat.setActivityPreferred("play with a ball");
-            cat.setMoodLevel(5);
+            cat.setLoyalty(4);
             cat.setAge(2);
             cat.setFoodPreferred("Beans");
             cat.setToiletNeed(6);
             cat.setHealthLevel(9);
             cat.setEnergyLevel(8);
+            cat.setScaredLevel(5);
             System.out.println("The name of your new cat is: " + name);
+            System.out.println();
+            System.out.println("The stats bars of " + cat.getName() + " are:");
+            System.out.println("Age: " + cat.getAge());
+            System.out.println("Activity preferred: " + cat.getActivityPreferred());
+            System.out.println("Preferred food: " + cat.getFoodPreferred());
+            System.out.println("Mood level: " + cat.getMoodLevel() + "/10");
+            System.out.println("Hunger level: " + cat.getHungerLevel() + "/10");
+            System.out.println("Loyalty level: " + cat.getLoyalty() + "/10");
+            System.out.println("Toilet need: " + cat.getToiletNeed() + "/10");
+            System.out.println("Health level: " + cat.getHealthLevel() + "/10");
+            System.out.println("Energy level: " + cat.getEnergyLevel() + "/10");
+            System.out.println("Scared level: " + cat.getScaredLevel() + "/10");
         }
+        return 2;
     }
+
 
     private int getAnimalChoiceFromUser() {
         System.out.println("Please select the type of animal would you like to take care of: Option 1 - Dog or Option 2 - Cat.");
@@ -82,7 +110,7 @@ public class Game {
 
 
     public void initRescuerAndDifficulty() {
-        String nameChosen = nameChosenByUser();
+        String rescuerNameChosen = rescuerNameChosenByUser();
         int budget = chosenDifficultyByUser();
         if (budget == 1) {
             budget = 150;
@@ -91,12 +119,12 @@ public class Game {
         } else {
             budget = 75;
         }
-        Rescuer rescuer = new Rescuer(nameChosen, budget);
-        System.out.println("Your name is: " + nameChosen + ". Your budget is: " + budget + ". Be careful how you spend your money.");
+        Rescuer rescuer = new Rescuer(rescuerNameChosen, budget);
+        System.out.println("Your name is: " + rescuerNameChosen + ". Your budget is: " + budget + ". Be careful how you spend your money.");
 
     }
 
-    private String nameChosenByUser() {
+    private String rescuerNameChosenByUser() {
         System.out.println("Please enter your name.");
         Scanner scanner = new Scanner(System.in);
         String x;
@@ -104,7 +132,7 @@ public class Game {
             x = scanner.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid name");
-            return nameChosenByUser();
+            return rescuerNameChosenByUser();
         }
         return x;
 
@@ -129,23 +157,47 @@ public class Game {
         return y;
     }
 
-    private String nameAnimal(){
+    private String nameAnimal() {
         System.out.println("Please choose a name for your new pet.");
         Scanner scanner = new Scanner(System.in);
         String name;
         try {
             name = scanner.nextLine();
-        }catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid name");
             return nameAnimal();
         }
         return name;
 
     }
-    private void requireFeeding(){
+
+    private void requireFeeding() {
+        System.out.println();
         System.out.println("Your pet is hungry. Please feed him.");
         initFood();
         foodNames();
+        int x = getFeedingOptionFromUser();
+        rescuer.feedPet(dog, availableAnimalFood.get(x));
+
+
+    }
+
+    private int getFeedingOptionFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        int x;
+        try {
+            x = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("You have entered an invalid option number.");
+            return getFeedingOptionFromUser();
+        }
+        if (x < 1 || x > 3) {
+            System.out.println("You have entered an invalid option number.");
+            getFeedingOptionFromUser();
+        }
+        System.out.println("You have chosen option " + x);
+        return x;
+
     }
 
 
@@ -179,9 +231,9 @@ public class Game {
             int x = i;
             if (i == 0) {
                 System.out.println("Option " + (x + 1) + " is: " + availableAnimalFood.get(i).getName());
-            }else if (i == 1){
+            } else if (i == 1) {
                 System.out.println("Option " + (x + 1) + " is: " + availableAnimalFood.get(i).getName());
-            }else {
+            } else {
                 System.out.println("Option " + (x + 1) + " is: You can choose to not feed the pet right now");
             }
         }

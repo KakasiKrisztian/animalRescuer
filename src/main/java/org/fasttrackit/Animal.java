@@ -10,7 +10,7 @@ public class Animal {
     private String activityPreferred;
 
     //optional
-    private double loyalty;
+    private int loyalty;
     private int scaredLevel;
     private int energyLevel;
     private int toiletNeed;
@@ -80,7 +80,7 @@ public class Animal {
         return loyalty;
     }
 
-    public void setLoyalty(double loyalty) {
+    public void setLoyalty(int loyalty) {
         this.loyalty = loyalty;
     }
 
