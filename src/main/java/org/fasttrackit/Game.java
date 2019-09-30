@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Game {
     Rescuer rescuer;
     VeterinaryDoctor veterinaryDoctor;
-    Animal dog;
+    Animal animal;
     private List<AnimalFood> availableAnimalFood = new ArrayList<>();
     private RecreationalActivity[] availableActivities = new RecreationalActivity[4];
 
@@ -32,57 +32,57 @@ public class Game {
         String name = nameAnimal();
         if (animalChosen <= 1) {
             System.out.println("You have chosen to take care of this cute dog.");
-            Animal dog = new Dog(name, "Husky");
-            dog.setMoodLevel(4);
-            dog.setScaredLevel(8);
-            dog.setLoyalty(2);
-            dog.setHungerLevel(9);
-            dog.setHealthLevel(6);
-            dog.setFoodPreferred("Meat");
-            dog.setAge(4);
-            dog.setEnergyLevel(7);
-            dog.setActivityPreferred("play catch");
-            dog.setToiletNeed(4);
+            animal = new Dog(name, "Husky");
+            animal.setMoodLevel(4);
+            animal.setScaredLevel(8);
+            animal.setLoyalty(2);
+            animal.setHungerLevel(9);
+            animal.setHealthLevel(6);
+            animal.setFoodPreferred("Meat");
+            animal.setAge(4);
+            animal.setEnergyLevel(7);
+            animal.setActivityPreferred("play catch");
+            animal.setToiletNeed(4);
             System.out.println("The name of your new dog is: " + name);
             System.out.println();
-            System.out.println("The stats of " + dog.getName() + " are:");
-            System.out.println("Age: " + dog.getAge());
-            System.out.println("Preferred food: " + dog.getFoodPreferred());
-            System.out.println("Activity preferred: " + dog.getActivityPreferred());
-            System.out.println("Mood level: " + dog.getMoodLevel() + "/10");
-            System.out.println("Scared level: " + dog.getScaredLevel() + "/10");
-            System.out.println("Loyalty level: " + dog.getLoyalty() + "/10");
-            System.out.println("Hunger level: " + dog.getHungerLevel() + "/10");
-            System.out.println("Health level: " + dog.getHealthLevel() + "/10");
-            System.out.println("Energy level: " + dog.getEnergyLevel() + "/10");
-            System.out.println("Toilet need level: " + dog.getToiletNeed() + "/10");
+            System.out.println("The stats of " + animal.getName() + " are:");
+            System.out.println("Age: " + animal.getAge());
+            System.out.println("Preferred food: " + animal.getFoodPreferred());
+            System.out.println("Activity preferred: " + animal.getActivityPreferred());
+            System.out.println("Mood level: " + animal.getMoodLevel() + "/10");
+            System.out.println("Scared level: " + animal.getScaredLevel() + "/10");
+            System.out.println("Loyalty level: " + animal.getLoyalty() + "/10");
+            System.out.println("Hunger level: " + animal.getHungerLevel() + "/10");
+            System.out.println("Health level: " + animal.getHealthLevel() + "/10");
+            System.out.println("Energy level: " + animal.getEnergyLevel() + "/10");
+            System.out.println("Toilet need level: " + animal.getToiletNeed() + "/10");
             return 1;
         } else {
             System.out.println("You have chosen to take care of this fluffy cat.");
-            Animal cat = new Cat(name, "Munchkin");
-            cat.setMoodLevel(6);
-            cat.setHungerLevel(7);
-            cat.setActivityPreferred("play with a ball");
-            cat.setLoyalty(4);
-            cat.setAge(2);
-            cat.setFoodPreferred("Beans");
-            cat.setToiletNeed(6);
-            cat.setHealthLevel(9);
-            cat.setEnergyLevel(8);
-            cat.setScaredLevel(5);
+            animal = new Cat(name, "Munchkin");
+            animal.setMoodLevel(6);
+            animal.setHungerLevel(7);
+            animal.setActivityPreferred("play with a ball");
+            animal.setLoyalty(4);
+            animal.setAge(2);
+            animal.setFoodPreferred("Beans");
+            animal.setToiletNeed(6);
+            animal.setHealthLevel(9);
+            animal.setEnergyLevel(8);
+            animal.setScaredLevel(5);
             System.out.println("The name of your new cat is: " + name);
             System.out.println();
-            System.out.println("The stats bars of " + cat.getName() + " are:");
-            System.out.println("Age: " + cat.getAge());
-            System.out.println("Activity preferred: " + cat.getActivityPreferred());
-            System.out.println("Preferred food: " + cat.getFoodPreferred());
-            System.out.println("Mood level: " + cat.getMoodLevel() + "/10");
-            System.out.println("Hunger level: " + cat.getHungerLevel() + "/10");
-            System.out.println("Loyalty level: " + cat.getLoyalty() + "/10");
-            System.out.println("Toilet need: " + cat.getToiletNeed() + "/10");
-            System.out.println("Health level: " + cat.getHealthLevel() + "/10");
-            System.out.println("Energy level: " + cat.getEnergyLevel() + "/10");
-            System.out.println("Scared level: " + cat.getScaredLevel() + "/10");
+            System.out.println("The stats bars of " + animal.getName() + " are:");
+            System.out.println("Age: " + animal.getAge());
+            System.out.println("Activity preferred: " + animal.getActivityPreferred());
+            System.out.println("Preferred food: " + animal.getFoodPreferred());
+            System.out.println("Mood level: " + animal.getMoodLevel() + "/10");
+            System.out.println("Hunger level: " + animal.getHungerLevel() + "/10");
+            System.out.println("Loyalty level: " + animal.getLoyalty() + "/10");
+            System.out.println("Toilet need: " + animal.getToiletNeed() + "/10");
+            System.out.println("Health level: " + animal.getHealthLevel() + "/10");
+            System.out.println("Energy level: " + animal.getEnergyLevel() + "/10");
+            System.out.println("Scared level: " + animal.getScaredLevel() + "/10");
         }
         return 2;
     }
@@ -109,7 +109,7 @@ public class Game {
     }
 
 
-    public void initRescuerAndDifficulty() {
+    private void initRescuerAndDifficulty() {
         String rescuerNameChosen = rescuerNameChosenByUser();
         int budget = chosenDifficultyByUser();
         if (budget == 1) {
@@ -119,7 +119,7 @@ public class Game {
         } else {
             budget = 75;
         }
-        Rescuer rescuer = new Rescuer(rescuerNameChosen, budget);
+        rescuer = new Rescuer(rescuerNameChosen, budget);
         System.out.println("Your name is: " + rescuerNameChosen + ". Your budget is: " + budget + ". Be careful how you spend your money.");
 
     }
@@ -177,7 +177,7 @@ public class Game {
         initFood();
         foodNames();
         int x = getFeedingOptionFromUser();
-        rescuer.feedPet(dog, availableAnimalFood.get(x));
+        rescuer.feedPet(animal, availableAnimalFood.get(x));
 
 
     }
@@ -201,7 +201,7 @@ public class Game {
     }
 
 
-    public void initFood() {
+    private void initFood() {
         AnimalFood animalFood1 = new AnimalFood("Meat", 10, 1, "Dogs", false);
         availableAnimalFood.add(animalFood1);
 
@@ -225,7 +225,7 @@ public class Game {
 
     }
 
-    public void foodNames() {
+    private void foodNames() {
         System.out.println("The available foods to feed your animal are:");
         for (int i = 0; i <= availableAnimalFood.size(); i++) {
             int x = i;
