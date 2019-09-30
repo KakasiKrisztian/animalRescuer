@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Game {
-    Rescuer rescuer;
+    private Rescuer rescuer;
     VeterinaryDoctor veterinaryDoctor;
-    Animal animal;
+    private Animal animal;
     private List<AnimalFood> availableAnimalFood = new ArrayList<>();
     private RecreationalActivity[] availableActivities = new RecreationalActivity[4];
 
@@ -27,7 +27,7 @@ public class Game {
         requireFeeding();
     }
 
-    public final int initAnimal() {
+    private void initAnimal() {
         int animalChosen = getAnimalChoiceFromUser();
         String name = nameAnimal();
         if (animalChosen <= 1) {
@@ -56,7 +56,6 @@ public class Game {
             System.out.println("Health level: " + animal.getHealthLevel() + "/10");
             System.out.println("Energy level: " + animal.getEnergyLevel() + "/10");
             System.out.println("Toilet need level: " + animal.getToiletNeed() + "/10");
-            return 1;
         } else {
             System.out.println("You have chosen to take care of this fluffy cat.");
             animal = new Cat(name, "Munchkin");
@@ -84,7 +83,6 @@ public class Game {
             System.out.println("Energy level: " + animal.getEnergyLevel() + "/10");
             System.out.println("Scared level: " + animal.getScaredLevel() + "/10");
         }
-        return 2;
     }
 
 
@@ -142,6 +140,7 @@ public class Game {
         System.out.println("Please choose the difficulty on which you want to play: 1, 2 or 3.");
         Scanner scanner = new Scanner(System.in);
         int y = scanner.nextInt();
+        //poate nu prinde string
         try {
             if (y >= 4 || y <= 0) {
                 System.out.println("You have entered an invalid option number.");
@@ -177,6 +176,10 @@ public class Game {
         initFood();
         foodNames();
         int x = getFeedingOptionFromUser();
+        if (x == 3){
+            System.out.println("You have chosen to not feed your pet at this time.");
+            return;
+        }
         rescuer.feedPet(animal, availableAnimalFood.get(x));
 
 

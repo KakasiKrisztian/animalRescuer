@@ -27,7 +27,7 @@ public class Rescuer {
         System.out.println(animal.getName() + " mood level is: " + animal.getMoodLevel() + "/10");
         System.out.println(this.getName() + " just gave some " + animalFood.getName() + " food to " + animal.getName() + ".");
 
-        if (animalFood.getName() == animal.getFoodPreferred()) {
+        if (animalFood.getName().equals(animal.getFoodPreferred())) {
             animal.setMoodLevel(animal.getMoodLevel() + 1);
             System.out.println("Getting his favorite food makes " + animal.getName() + " happier. His mood level is now " + animal.getMoodLevel() + "/10.");
 
