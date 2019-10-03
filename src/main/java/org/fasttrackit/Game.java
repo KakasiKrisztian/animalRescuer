@@ -25,6 +25,7 @@ public class Game {
         initRescuerAndDifficulty();
         initAnimal();
         requireFeeding();
+        requirePlayingWithYourPet();
     }
 
     private void initAnimal() {
@@ -170,13 +171,42 @@ public class Game {
 
     }
 
+    private void requirePlayingWithYourPet() {
+        System.out.println();
+        System.out.println(animal.getName() + " is getting bored. Please play with your pet.");
+        initActivities();
+        printAvailableActivities();
+        int x = getActivityChoiceFromUser();
+
+        rescuer.play(availableActivities[x], animal);
+
+
+    }
+
+    private int getActivityChoiceFromUser() {
+        Scanner scanner = new Scanner(System.in);
+        int y;
+        try {
+            y = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("You have entered an invalid option.");
+            return getActivityChoiceFromUser();
+        }
+        if (y < 1 || y > 4) {
+            System.out.println("You have entered an invalid option number.");
+            getActivityChoiceFromUser();
+        }
+        System.out.println("You have chosen activity number " + y);
+        return y - 1;
+    }
+
     private void requireFeeding() {
         System.out.println();
-        System.out.println("Your pet is hungry. Please feed him.");
+        System.out.println(animal.getName() + " is hungry. Please feed him.");
         initFood();
         foodNames();
         int x = getFeedingOptionFromUser();
-        if (x == 3){
+        if (x == 2) {
             System.out.println("You have chosen to not feed your pet at this time.");
             return;
         }
@@ -199,7 +229,7 @@ public class Game {
             getFeedingOptionFromUser();
         }
         System.out.println("You have chosen option " + x);
-        return x;
+        return x - 1;
 
     }
 
@@ -214,16 +244,16 @@ public class Game {
 
 
     public void initActivities() {
-        RecreationalActivity recreationalActivity1 = new RecreationalActivity("Walk");
+        RecreationalActivity recreationalActivity1 = new RecreationalActivity("walking");
         availableActivities[0] = recreationalActivity1;
 
-        RecreationalActivity recreationalActivity2 = new RecreationalActivity("Exploring new places");
+        RecreationalActivity recreationalActivity2 = new RecreationalActivity("exploring some new places");
         availableActivities[1] = recreationalActivity2;
 
-        RecreationalActivity recreationalActivity3 = new RecreationalActivity("Pet the animal");
+        RecreationalActivity recreationalActivity3 = new RecreationalActivity("playing catch");
         availableActivities[2] = recreationalActivity3;
 
-        RecreationalActivity recreationalActivity4 = new RecreationalActivity("Talk with the animal");
+        RecreationalActivity recreationalActivity4 = new RecreationalActivity("talking");
         availableActivities[3] = recreationalActivity4;
 
     }
@@ -242,10 +272,11 @@ public class Game {
         }
     }
 
-    public void availableActivities() {
+    private void printAvailableActivities() {
         System.out.println("The available activities are: ");
         for (int i = 0; i < availableActivities.length; i++) {
-            System.out.println("Option " + (i + 1) + " is: " + availableActivities[i].getName());
+            int x = i;
+            System.out.println("Option " + (x + 1) + " is: " + availableActivities[i].getName());
         }
     }
 
