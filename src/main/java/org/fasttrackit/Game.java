@@ -50,6 +50,8 @@ public class Game {
 
     }
 
+
+
     private void initAnimal() {
         int animalChosen = getAnimalChoiceFromUser();
         String name = nameAnimal();
