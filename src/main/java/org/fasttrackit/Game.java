@@ -1,5 +1,7 @@
 package org.fasttrackit;
 
+import java.io.DataInputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -153,7 +155,7 @@ public class Game {
         String x;
         try {
             x = scanner.nextLine();
-        } catch (InputMismatchException e) {
+        } catch (Exception e) {
             System.out.println("You have entered an invalid name");
             return rescuerNameChosenByUser();
         }
@@ -164,21 +166,22 @@ public class Game {
     private int chosenDifficultyByUser() {
         System.out.println("Please choose the difficulty on which you want to play: 1, 2 or 3.");
         Scanner scanner = new Scanner(System.in);
-        int y = scanner.nextInt();
+        int y = 0;
         //poate nu prinde string
         try {
-            if (y >= 4 || y <= 0) {
-                System.out.println("You have entered an invalid option number.");
-                chosenDifficultyByUser();
-            } else {
-                System.out.println("You have chosen difficulty: " + y);
-                return y;
-            }
+            y = scanner.nextInt();
         } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid option number.");
             chosenDifficultyByUser();
         }
+        if (y >= 4 || y <= 0) {
+            System.out.println("You have entered an invalid option number.");
+            chosenDifficultyByUser();
+        } else {
+            System.out.println("You have chosen difficulty: " + y);
+        }
         return y;
+
     }
 
     private String nameAnimal() {
@@ -260,7 +263,7 @@ public class Game {
         }
         if (x < 1 || x > 3) {
             System.out.println("You have entered an invalid option number.");
-            getFeedingOptionFromUser();
+            return getFeedingOptionFromUser();
         }
         System.out.println("You have chosen option " + x);
         return x - 1;
