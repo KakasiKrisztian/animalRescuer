@@ -155,7 +155,7 @@ public class Game {
         String x;
         try {
             x = scanner.nextLine();
-        } catch (Exception e) {
+        } catch (InputMismatchException e) {
             System.out.println("You have entered an invalid name");
             return rescuerNameChosenByUser();
         }
