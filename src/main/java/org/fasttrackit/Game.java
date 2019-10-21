@@ -150,16 +150,15 @@ public class Game {
     }
 
     private String rescuerNameChosenByUser() {
-        System.out.println("Please enter your name.");
-        Scanner scanner = new Scanner(System.in);
-        String x;
-        try {
-            x = scanner.nextLine();
-        } catch (InputMismatchException e) {
-            System.out.println("You have entered an invalid name");
-            return rescuerNameChosenByUser();
-        }
-        return x;
+            System.out.println("Please enter your name.");
+            Scanner scanner = new Scanner(System.in);
+            String name = scanner.nextLine();
+            while(!name.matches("[a-zA-Z]+")) {
+                System.out.println("You have entered an invalid name");
+                name = scanner.nextLine();
+            }
+            return name;
+
 
     }
 
@@ -187,14 +186,13 @@ public class Game {
     private String nameAnimal() {
         System.out.println("Please choose a name for your new pet.");
         Scanner scanner = new Scanner(System.in);
-        String name;
-        try {
-            name = scanner.nextLine();
-        } catch (InputMismatchException e) {
+        String name = scanner.nextLine();
+        while(!name.matches("[a-zA-Z]+")) {
             System.out.println("You have entered an invalid name");
-            return nameAnimal();
+            name = scanner.nextLine();
         }
         return name;
+
 
     }
 
