@@ -67,19 +67,22 @@ public class Game {
                     }
                 }
             }
-            if (winnerNotKnown){
-                conclusion();
-            }else {
-                System.out.println();
+            if (winnerNotKnown) {
+                boolean conclusion = conclusion();
+                winnerNotKnown = conclusion;
+            } else {
+                winnerNotKnown = false;
+                System.out.println("Looks like you managed to keep the animal alive. Not great not terrible");
+                System.out.println("Game over!");
             }
-
-            }
-
 
         }
 
 
-        public boolean conclusion(){
+    }
+
+
+    public boolean conclusion() {
         boolean winnerNotKnown;
         if (animal.getMoodLevel() >= 8 && animal.getHungerLevel() <= 4) {
             System.out.println("You have succesfully rescued " + animal.getName());
@@ -97,9 +100,6 @@ public class Game {
             return winnerNotKnown = false;
         }
     }
-
-
-
 
 
     private void initAnimal() {
@@ -160,14 +160,14 @@ public class Game {
         }
     }
 
-    public void goToWork(){
+    public void goToWork() {
         System.out.println("You chose to go to work this hour. You gained 50$.");
-        rescuer.setMoney(rescuer.getMoney()+50);
-        animal.setMoodLevel(animal.getMoodLevel()-1);
+        rescuer.setMoney(rescuer.getMoney() + 50);
+        animal.setMoodLevel(animal.getMoodLevel() - 1);
         System.out.println("Your pet missed you. His mood level is now " + animal.getMoodLevel() + "/10");
     }
 
-    public void showStats(){
+    public void showStats() {
         System.out.println("Your stats are:");
         System.out.println("Budget: " + rescuer.getMoney());
         System.out.println("Your pet stats are:");
@@ -204,10 +204,9 @@ public class Game {
             budget = 150;
         } else if (budget == 2) {
             budget = 100;
-        } else if (budget == 3){
+        } else if (budget == 3) {
             budget = 75;
-        }
-        else {
+        } else {
             initRescuerAndDifficulty();
         }
         System.out.println("Your name is: " + rescuerNameChosen + ". Your budget is: " + budget + ". Be careful how you spend your money.");
@@ -217,14 +216,14 @@ public class Game {
     }
 
     private String rescuerNameChosenByUser() {
-            System.out.println("Please enter your name.");
-            Scanner scanner = new Scanner(System.in);
-            String name = scanner.nextLine();
-            while(!name.matches("[a-zA-Z]+")) {
-                System.out.println("You have entered an invalid name");
-                name = scanner.nextLine();
-            }
-            return name;
+        System.out.println("Please enter your name.");
+        Scanner scanner = new Scanner(System.in);
+        String name = scanner.nextLine();
+        while (!name.matches("[a-zA-Z]+")) {
+            System.out.println("You have entered an invalid name");
+            name = scanner.nextLine();
+        }
+        return name;
 
 
     }
@@ -250,6 +249,7 @@ public class Game {
         return y;
 
     }
+
     private int chosenOptionByUser() {
         System.out.println("Please choose one of the options: 1, 2, 3 or 4.");
         Scanner scanner = new Scanner(System.in);
@@ -275,7 +275,7 @@ public class Game {
         System.out.println("Please choose a name for your new pet.");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
-        while(!name.matches("[a-zA-Z]+")) {
+        while (!name.matches("[a-zA-Z]+")) {
             System.out.println("You have entered an invalid name");
             name = scanner.nextLine();
         }
@@ -285,17 +285,21 @@ public class Game {
     }
 
     private void requirePlayingWithYourPet() {
-        System.out.println();
-        System.out.println(animal.getName() + " looks bored. You chose play with your pet.");
-        initActivities();
-        printAvailableActivities();
-        int x = getActivityChoiceFromUser();
-        if (rescuer.getMoney() > 15) {
-            rescuer.setMoney(rescuer.getMoney() - 15);
-            rescuer.play(availableActivities[x], animal);
-            System.out.println("Having an activity with your per costs 15$. Your budget is now: " + rescuer.getMoney() + "$");
+        if (animal.getMoodLevel() > 10){
+            System.out.println("Your pet is happy. You just wasted your time.");
         }else {
-            System.out.println("You do not have enough money to have an activity with your pet.");
+            System.out.println();
+            System.out.println(animal.getName() + " looks bored. You chose play with your pet.");
+            initActivities();
+            printAvailableActivities();
+            int x = getActivityChoiceFromUser();
+            if (rescuer.getMoney() > 15) {
+                rescuer.setMoney(rescuer.getMoney() - 15);
+                rescuer.play(availableActivities[x], animal);
+                System.out.println("Having an activity with your per costs 15$. Your budget is now: " + rescuer.getMoney() + "$");
+            } else {
+                System.out.println("You do not have enough money to have an activity with your pet.");
+            }
         }
 
 
@@ -319,21 +323,25 @@ public class Game {
     }
 
     private void requireFeeding() {
-        System.out.println();
-        System.out.println(animal.getName() + " looks hungry. You chose to feed him.");
-        foodNames();
-        int x = getFeedingOptionFromUser();
-        if (x == 2) {
-            System.out.println("You have chosen to not feed your pet at this time.");
-            return;
-        }
+        if (animal.getHungerLevel() < 1){
+            System.out.println("Your pet is not hungry. You just wasted your time.");
+        }else {
+            System.out.println();
+            System.out.println(animal.getName() + " looks hungry. You chose to feed him.");
+            foodNames();
+            int x = getFeedingOptionFromUser();
+            if (x == 2) {
+                System.out.println("You have chosen to not feed your pet at this time.");
+                return;
+            }
 
-        if (rescuer.getMoney() > 25) {
-            rescuer.setMoney(rescuer.getMoney() - availableAnimalFood.get(x).getPrice());
-            rescuer.feedPet(animal, availableAnimalFood.get(x));
-            System.out.println("Feeding costs " + availableAnimalFood.get(x).getPrice() + ". Your budget is now: " + rescuer.getMoney() + "$");
-        } else {
-            System.out.println("You do not have enough money to feed your pet.");
+            if (rescuer.getMoney() > 25) {
+                rescuer.setMoney(rescuer.getMoney() - availableAnimalFood.get(x).getPrice());
+                rescuer.feedPet(animal, availableAnimalFood.get(x));
+                System.out.println("Feeding costs " + availableAnimalFood.get(x).getPrice() + ". Your budget is now: " + rescuer.getMoney() + "$");
+            } else {
+                System.out.println("You do not have enough money to feed your pet.");
+            }
         }
 
     }
